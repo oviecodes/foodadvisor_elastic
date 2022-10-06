@@ -1,0 +1,44 @@
+{
+  "name": "foodadvisor-v4",
+  "private": true,
+  "version": "0.1.0",
+  "description": "A Strapi application",
+  "scripts": {
+    "develop": "strapi develop",
+    "start": "strapi start",
+    "build": "strapi build",
+    "strapi": "strapi",
+    "seed": "node script/seed.js"
+  },
+  "devDependencies": {},
+  "dependencies": {
+    "@elastic/elasticsearch": "^8.4.0",
+    "@notum-cz/strapi-plugin-content-versioning": "^0.4.4",
+    "@offset-dev/strapi-calendar": "^0.0.8",
+    "@strapi/plugin-i18n": "4.3.6",
+    "@strapi/plugin-seo": "^1.7.2",
+    "@strapi/plugin-users-permissions": "4.3.6",
+    "@strapi/strapi": "4.3.6",
+    "axios": "^1.0.0",
+    "fs": "^0.0.1-security",
+    "fs-extra": "^10.0.0",
+    "lodash": "^4.17.21",
+    "lodash.set": "^4.3.2",
+    "sqlite3": "5.0.2",
+    "strapi-plugin-entity-relationship-chart": "^4.1.0",
+    "strapi-plugin-todo": "^0.0.9",
+    "unzip-stream": "^0.3.1",
+    "uuid-v4": "^0.1.0"
+  },
+  "author": {
+    "name": "A Strapi developer"
+  },
+  "strapi": {
+    "uuid": "FOODADVISOR-LOCAL-e74f5ec4-d690-4ff6-970e-f6ada0a1f8ff"
+  },
+  "engines": {
+    "node": ">=12.x.x <=16.x.x",
+    "npm": ">=6.0.0"
+  },
+  "license": "MIT"
+}
