@@ -10,5 +10,16 @@ module.exports = {
        auth: false
      },
     },
+
+    {
+      method: 'POST',
+      path: '/search/restaurants',
+      handler: 'search.search_restaurants',
+      config: {
+        policies: [],
+        middlewares: [],
+        auth: false
+      },
+     },
   ],
 };

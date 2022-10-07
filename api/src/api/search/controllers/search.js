@@ -15,8 +15,14 @@ module.exports = {
     }
   },
 
-  search: async(ctx, next) => {
-
+  search_restaurants: async(ctx, next) => {
+    try {
+      const data = await strapi.service('api::search.search').search_restaurants(ctx.query)
+      // console.log('here', ctx.query)
+      ctx.body = data
+    } catch (err) {
+      ctx.body = err;
+    }
   }
   
 };

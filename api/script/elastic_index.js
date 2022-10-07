@@ -1,49 +1,17 @@
-const { Client } = require('@elastic/elasticsearch')
-const host = 'https://localhost:9200'
 const strapi_url = 'http://localhost:1337/'
 const axios = require('axios')
-// const cert = require('../http_ca.crt')
-const fs = require('fs')
 require('array.prototype.flatmap').shim()
-// const flatMap = require('flatmap')
 
-const client = new Client({
-    node: host,
-    auth: {
-      username: 'elastic',
-      password: 'hybridtechnol123'
-    },
-    tls: {
-      ca: fs.readFileSync('./http_ca.crt'),
-      rejectUnauthorized: false
-    }
-})
+const { connector, testConn } = require('../helpers/elastic_client')
 
-
-
-client.info()
-  .then(response => console.log(response))
-  .catch(error => console.error(error))
+const client = connector()
+testConn(client)
 
 const run = async () => {
 
   const response = await axios.get(`${strapi_url}api/search/restaurants`)
 
   const dataset = response.data
-
-  // console.log(response)
-
-  // http://localhost:1337/api/search/restaurants
-
-  // // await Promise.all(indices.map((el) => {
-  //   await client.index({
-  //     index: 'foodadvisor-restaurant',
-  //     body: {
-  //       name: 'la bruja',
-  //       slug: 'la-bruja'
-  //     }
-  //   })
-  // }))
 
   await client.indices.create({
     index: 'foodadvisor-restaurant',
@@ -95,15 +63,6 @@ const run = async () => {
 
 }
 
-
-  // console.log(indices)
-  // await client.indices.refresh({ index: 'foodadvisor-restaurant' })
-
-
-// run().catch(console.log)
-
-
-
 async function read() {
 
   const searchTerm = 'la'
@@ -122,8 +81,6 @@ async function read() {
       }
     }
   })
-  console.log(body.hits.hits)
-  // console.log(body)
 }
 
 read().catch(console.log)
