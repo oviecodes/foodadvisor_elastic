@@ -10,7 +10,6 @@
     "strapi": "strapi",
     "seed": "node script/seed.js"
   },
-  "devDependencies": {},
   "dependencies": {
     "@elastic/elasticsearch": "^8.4.0",
     "@notum-cz/strapi-plugin-content-versioning": "^0.4.4",
@@ -19,7 +18,9 @@
     "@strapi/plugin-seo": "^1.7.2",
     "@strapi/plugin-users-permissions": "4.3.6",
     "@strapi/strapi": "4.3.6",
+    "array.prototype.flatmap": "^1.3.0",
     "axios": "^1.0.0",
+    "flatmap": "^0.0.3",
     "fs": "^0.0.1-security",
     "fs-extra": "^10.0.0",
     "lodash": "^4.17.21",
