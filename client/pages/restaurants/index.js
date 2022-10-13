@@ -73,7 +73,10 @@ const Restaurants = ({
             {/* categories */}
             <select
               className="block w-52 py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500"
-              onChange={(value) => setCategoryId(delve(value, "target.value"))}
+              onChange={(value) => {
+                setCategoryId(delve(value, "target.value"))
+                setSearchData('')
+              }}
             >
               <option value="">
                 {categoryId
@@ -95,7 +98,10 @@ const Restaurants = ({
             {/* location */}
             <select
               className="block w-52 py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500"
-              onChange={(value) => setPlaceId(delve(value, "target.value"))}
+              onChange={(value) => {
+                setPlaceId(delve(value, "target.value"))
+                setSearchData('')
+              }}
             >
               <option value="">
                 {placeId ? "Clear filter" : placeText || "Select a place"}
@@ -123,6 +129,8 @@ const Restaurants = ({
                   } w-1/4 p-4 border rounded-full bg-primary hover:bg-primary-darker text-white hover:bg-gray-100 focus:outline-none`} disabled={searchText.length <= 2} onClick={async () => {
                     const res = await search(searchText)
                     setSearchData(res)
+                    setCategoryId(null)
+                    setPlaceId(null)
                     // console.log(data.restaurants)
                   }}
                 >
@@ -131,7 +139,7 @@ const Restaurants = ({
           </div>
         </div>
 
-        <NoResults status={status} length={delve(data, "restaurants").length} />
+        <NoResults status={status || (searchData != '' && searchData.length == 0)} length={ searchData != '' ? searchData.restaurants.length : delve(data, "restaurants").length} />
 
         {/* render initial data || search results  */}
         {searchData.length <= 0 ? <div className="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-16 mt-24 px-4">
