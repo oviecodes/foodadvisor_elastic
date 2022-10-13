@@ -20,6 +20,7 @@ const RestaurantContent = ({ pageData }) => {
   const images = delve(pageData, "attributes.images");
   const category = delve(pageData, "attributes.category");
   const information = delve(pageData, "attributes.information");
+  // const search = delve(pageData, 'attributes.search')
   const description = delve(information, "description");
   const opening_hours = delve(information, "opening_hours");
   const location = delve(information, "location");

@@ -141,3 +141,17 @@ export async function getArticles(key) {
 
   return { articles: articles.data, count: articles.meta.pagination.total };
 }
+
+export async function search(searchText) {
+  console.log('searching', searchText)
+  const resRestaurants = await fetch(
+    getStrapiURL(`/search/restaurants?s=${searchText}`),
+    {
+      method: "POST"
+    }
+  )
+
+  const restaurants = await resRestaurants.json()
+
+  return { restaurants: restaurants, count: restaurants.length }
+}

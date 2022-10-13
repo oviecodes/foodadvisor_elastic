@@ -4,7 +4,8 @@
   "info": {
     "singularName": "restaurant-page",
     "pluralName": "restaurant-pages",
-    "displayName": "RestaurantPage"
+    "displayName": "RestaurantPage",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -81,6 +82,14 @@
         }
       },
       "component": "shared.seo"
+    },
+    "searchText": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string"
     }
   }
 }

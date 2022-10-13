@@ -19,8 +19,11 @@ const run = async () => {
       mappings: {
         properties: {
           id: { type: 'integer' },
-          name: { type: '' },
+          name: { type: 'text' },
           slug: { type: 'keyword' },
+          location: { type: 'text' },
+          description: { type: 'text' },
+          url: { type: 'text' }
         }
       }
     }
@@ -31,7 +34,7 @@ const run = async () => {
 
   const operations = dataset.flatMap(doc => [{ index: { _index: 'foodadvisor-restaurant' } }, doc])
 
-  console.log(operations)
+  // console.log(operations)
 
   const bulkResponse = await client.bulk({ refresh: true, operations })
 
@@ -54,7 +57,7 @@ const run = async () => {
         })
       }
     })
-    console.log(erroredDocuments)
+    // console.log(erroredDocuments)
   }
 
   const count = await client.count({ index: 'foodadvisor-restaurant' })
@@ -63,25 +66,27 @@ const run = async () => {
 
 }
 
-async function read() {
+run().catch(console.log)
 
-  const searchTerm = 'la'
+// async function read() {
 
-  const body = await client.search({
-    index: 'foodadvisor-restaurant',
-    body: {
-      query: {
-        regexp: { 
-          name: {
-            value: `${searchTerm}.*`,
-            flags: "ALL",
-            case_insensitive: true,
-          },
-        }
-      }
-    }
-  })
-}
+//   const searchTerm = 'la'
 
-read().catch(console.log)
+//   const body = await client.search({
+//     index: 'foodadvisor-restaurant',
+//     body: {
+//       query: {
+//         regexp: { 
+//           name: {
+//             value: `${searchTerm}.*`,
+//             flags: "ALL",
+//             case_insensitive: true,
+//           },
+//         }
+//       }
+//     }
+//   })
+// }
+
+// read().catch(console.log)
 
