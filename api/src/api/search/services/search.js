@@ -23,18 +23,18 @@ module.exports = ({ strapi }) => ({
         return mappedData
     },
 
-    articles: async() => {
+    // articles: async() => {
 
-        const data = await strapi.entityService.findMany('api::article.article', {
-            populate: { seo: true, category: true, image: true }
-        })
+    //     const data = await strapi.entityService.findMany('api::article.article', {
+    //         populate: { seo: true, category: true, image: true }
+    //     })
 
-        const mappedData = data.map((el, i) => {
+    //     const mappedData = data.map((el, i) => {
 
-            return { id: el.id, slug: el.slug, title: el.title, metaTitle: el.seo.metaTitle, metaDescription: el.seo.metaDescription, url: el.image.url, category: el.category.name }
-        })
-        return mappedData
-    },
+    //         return { id: el.id, slug: el.slug, title: el.title, metaTitle: el.seo.metaTitle, metaDescription: el.seo.metaDescription, url: el.image.url, category: el.category.name }
+    //     })
+    //     return mappedData
+    // },
 
     search_restaurants: async (data) => {
 
@@ -45,8 +45,6 @@ module.exports = ({ strapi }) => ({
 
             const search = data.s
             const field = data.field || 'name'
-
-            console.log(field)
 
             const body = await client.search({
                 index: 'foodadvisor-restaurant',

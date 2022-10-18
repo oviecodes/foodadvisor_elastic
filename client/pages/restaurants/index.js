@@ -46,17 +46,6 @@ const Restaurants = ({
     }
   );
 
-  // const { sData, SearchStatus } = useQuery(
-  //   [
-  //     "restaurants",
-
-  //   ],
-  //   search(searchText),
-  //   {
-  //     searchData,
-  //   }
-  // )
-
   const lastPage = Math.ceil(data.count / perPage) || 1;
 
   return (

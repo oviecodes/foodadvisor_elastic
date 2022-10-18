@@ -11,16 +11,16 @@ module.exports = {
      },
     },
 
-    {
-      method: 'GET',
-      path: '/search/articles',
-      handler: 'search.articles',
-      config: {
-        policies: [],
-        middlewares: [],
-        auth: false
-      },
-    },
+    // {
+    //   method: 'GET',
+    //   path: '/search/articles',
+    //   handler: 'search.articles',
+    //   config: {
+    //     policies: [],
+    //     middlewares: [],
+    //     auth: false
+    //   },
+    // },
 
     {
       method: 'POST',
